@@ -1,25 +1,26 @@
 package general;
 
-import java.io.IOException;
 import java.util.Scanner;
-
-import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
 import ontologia.Cliente;
 import ontologia.RegistrarPerfilDelCliente;
-import ontologia.TuriSMAOntology;
 
 public class RegistrarUsuario extends Behaviour {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 926330579801615147L;
 	RegistrarPerfilDelCliente rpc;
+	Scanner input;
 	public RegistrarUsuario(Agent myAgent) {
 		super(myAgent);
 	}
 
 	@Override
 	public void action() {
-		Scanner input = new Scanner(System.in);
+		input = new Scanner(System.in);
 		Cliente cliente = new Cliente();
 		System.out.println("Digite el nombre del nuevo cliente");
 		cliente.setNombre(input.nextLine());

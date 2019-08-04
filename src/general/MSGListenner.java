@@ -33,7 +33,7 @@ public class MSGListenner extends CyclicBehaviour{
 				myAgent.addBehaviour(new RegistrarHotel(myAgent));
 			}else if(msg.getContent().equals("Volver")){
 				//se recarga el menú inicial
-				((AgenteSistema)myAgent).inicio();
+				((AgenteSistema)myAgent).inicio(true);
 			}else if(msg.getContent().equals("PReserva")) {
 				//comportamiento para pedir una reserva
 				myAgent.addBehaviour(new PedirReserva(myAgent));

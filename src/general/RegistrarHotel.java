@@ -2,17 +2,18 @@ package general;
 
 import java.io.IOException;
 import java.util.Scanner;
-
-import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
 import ontologia.Hotel;
-import ontologia.InscribirHoteles;
 import ontologia.RegistrarCaracteristicasDelHotel;
 import ontologia.TipoHabitacion;
 
 public class RegistrarHotel extends Behaviour {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7729736436300749254L;
 	RegistrarCaracteristicasDelHotel ih = new RegistrarCaracteristicasDelHotel();
 	public RegistrarHotel(Agent myAgent) {
 		super(myAgent);
@@ -21,6 +22,7 @@ public class RegistrarHotel extends Behaviour {
 	public void action() {
 		//Toda la logica de recepcion de datos de hotel va aqui
 		Hotel hotel = new Hotel();
+		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 		System.out.println("Digite el nombre del hotel");
 		hotel.setNombreHotel(input.nextLine());

@@ -8,6 +8,7 @@ import jade.lang.acl.ACLMessage;
 import ontologia.TuriSMAOntology;
 
 public class TuriMSG extends ACLMessage {
+	private static final long serialVersionUID = -1205981458725310907L;
 	String contenido;
 	Serializable objeto;
 	public TuriMSG(int performativa) {

@@ -24,16 +24,15 @@ public class Reserva implements Concept {
    }
 
    /**
-* Protege name: NumeroHabitacion
+* Protege name: NombreHabitacion
    */
-   private int numeroHabitacion;
-   public void setNumeroHabitacion(int value) { 
-    this.numeroHabitacion=value;
+   private String nombreHabitacion;
+   public void setNombreHabitacion(String value) { 
+    this.nombreHabitacion=value;
    }
-   public int getNumeroHabitacion() {
-     return this.numeroHabitacion;
+   public String getNombreHabitacion() {
+     return this.nombreHabitacion;
    }
-
    /**
 * Protege name: hotel
    */
