@@ -55,12 +55,16 @@ public class MSGListenner extends CyclicBehaviour{
 					System.out.println("Error al comportar el almacenamiento del hotel");
 				}
 			}else if(msg.getContent().equals("AReserva")) {
-				//comportamiento para almacenar una 
-				//reserva
+				//comportamiento para almacenar una reserva
+				try {
+					myAgent.addBehaviour(new AlmacenarReserva(myAgent,msg.getContentObject()));
+				} catch (Exception e) {
+					System.out.println("Error al comportar el almacenamiento de la reserva");
+				}
 			}else if(msg.getContent().equals("AEReserva")) {
 				//comportamiento para almacenar la edición
 				//de una reserva
-			}else if(msg.getContent().equals("DHabitacio")) {
+			}else if(msg.getContent().equals("DHabitacion")) {
 				//comportamiento para disminuir la cantidad
 				//de habitaciones de un hotel
 			}

@@ -2,6 +2,7 @@ package agentes;
 
 import java.util.Scanner;
 
+import general.DBTemporal;
 import general.MSGListenner;
 import general.TuriMSG;
 import jade.core.Agent;
@@ -12,6 +13,7 @@ public class AgenteSistema extends Agent {
 	Scanner input;
 	protected void setup() {
 		super.getAID().setLocalName("AgenteSistema");
+		DBTemporal.temporal();
 		System.out.println("Bienvenido a TuriSMA \n");				
 		addBehaviour(new MSGListenner(this));
 		inicio(true);
@@ -22,22 +24,28 @@ public class AgenteSistema extends Agent {
 		while(wh) {
 			input = new Scanner(System.in);
 			System.out.println("¿Qué desea hacer? \n"
-					+ "(1) Registrar Usuario \n"
+					+ "(0) Registrar Cliente"
+					+ "(1) Editar Cliente \n"
 					+ "(2) Registrar Hotel \n"
-					+ "(3) Pedir Reservacion \n"
-					+ "(4) Editar Reservacion \n");
+					+ "(3) Pedir Reservación \n"
+					+ "(4) Editar Reservación \n");
 			try {
 				in = input.nextInt();
 			}catch(Exception e) {
 				System.out.println("Debe digitar un valor entre 1  y 4");
 			}
 			switch(in) {
-				case 1:
+				case 0:
 					msj.setReceptor("AgenteCliente");
 		        	msj.setContent("RUsuario");
 		        	send(msj);
 		        	wh = false;
 		        	break;
+				case 1:
+					//capacidad no implementada
+					//cambiar a false al implementar
+					wh = true;
+					break;
 				case 2:
 					msj.setReceptor("AgenteHotel");
 		        	msj.setContent("RHotel");

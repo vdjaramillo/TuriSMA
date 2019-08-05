@@ -4,6 +4,9 @@ package ontologia;
 import jade.content.*;
 import jade.util.leap.*;
 import jade.core.*;
+import java.util.LinkedList;
+
+import general.DBTemporal;
 
 /**
 * Protege name: Hotel
@@ -11,7 +14,33 @@ import jade.core.*;
 * @version 2019/08/2, 23:50:21
 */
 public class Hotel implements Concept {
-
+	public Hotel() {}
+	public Hotel(String nh, boolean ci, String dir, boolean cyr, int seg, int calif, int tel, TipoHabitacion[] th) {
+		setNombreHotel(nh);
+		setCertificaciónDeIdiomas(ci);
+		setDireccion(dir);
+		setCafeteriasyRestaurantes(cyr);
+		setNivelDeSeguridad(seg);
+		setTelefono(tel);
+		setCalificacion(calif);
+		setHabitaciones(th);
+	}
+	public static LinkedList<Hotel> getHoteles(float pres) {
+		boolean prueb=false;
+		LinkedList<Hotel> htlr = new LinkedList<>();
+		for(int i = 0; i<DBTemporal.hoteles.size();i++) {
+			for(int j =0; j<DBTemporal.hoteles.get(i).getHabitaciones().length;j++) {
+				if(DBTemporal.hoteles.get(i).getHabitaciones()[j].getPrecioNoche()<=pres) {
+					prueb=true;
+				}
+			}
+			if(prueb) {
+				htlr.add(DBTemporal.hoteles.get(i));
+			}
+			prueb = false;
+		}
+		return htlr;
+	}
    /**
 * Protege name: NombreHotel
    */

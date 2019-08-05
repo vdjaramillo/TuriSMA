@@ -11,7 +11,13 @@ import jade.core.*;
 * @version 2019/08/2, 23:50:21
 */
 public class Cliente implements Concept{
-
+	public Cliente() {}
+	public Cliente(String n, int cc, int ppto, int pfr) {
+		setNombre(n);
+		setCedula(cc);
+		setPresupuesto(ppto);
+		setPreferencias(pfr);
+	}
    /**
 * Protege name: Nombre
    */
