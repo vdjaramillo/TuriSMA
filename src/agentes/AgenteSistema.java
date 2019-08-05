@@ -18,6 +18,7 @@ public class AgenteSistema extends Agent {
 		addBehaviour(new MSGListenner(this));
 		inicio(true);
 	}
+	//este es el menú principal
 	public void inicio(boolean wh) {
 		int in = 0;
 		TuriMSG msj = new TuriMSG(ACLMessage.INFORM);
@@ -70,7 +71,6 @@ public class AgenteSistema extends Agent {
 			}
 			System.out.println("________________________________________________");
 			//Esta debe ser la ultima linea del inicio
-			
 		}
 	}
 }

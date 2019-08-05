@@ -15,6 +15,15 @@ public class MSGListenner extends CyclicBehaviour{
 			super(a);
 			escucha = false;
 		}
+	/* piensen en este action como en un servidor
+	 este action lo que hace es que recibe 
+	 todos los mensajes de todos los agentes
+	 como cada agente tiene una instancia de 
+	 este comportamiento, cada instancia recibe 
+	 sólo los mensajes de su agente poseedor
+	 y lo que hace es que, según el mensaje que se envíe
+	 crea en su agente el comportamiento acorde 
+	*/
 	public void action() {
 		AID[] aid = new AID[1];
 		aid[0] = myAgent.getAID();
