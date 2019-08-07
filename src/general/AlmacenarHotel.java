@@ -22,7 +22,7 @@ RegistrarCaracteristicasDelHotel rch;
 	public void action() {
 		//lógica de almacenamiento del hotel
 		System.out.println("Almacenando hotel");
-		DBTemporal.hoteles.add(rch.getHotel());
+		DatosDB.hoteles.add(rch.getHotel());
 	}
 
 	@Override

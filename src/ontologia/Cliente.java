@@ -12,7 +12,7 @@ import jade.core.*;
 */
 public class Cliente implements Concept{
 	public Cliente() {}
-	public Cliente(String n, int cc, int ppto, int pfr) {
+	public Cliente(String n, int cc, float ppto, int pfr) {
 		setNombre(n);
 		setCedula(cc);
 		setPresupuesto(ppto);

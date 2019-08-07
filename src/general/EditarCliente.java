@@ -20,10 +20,10 @@ public class EditarCliente extends Behaviour {
 	public void action() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("¿Qué cliente desea editar?");
-		for(int i = 0; i<DBTemporal.usuarios.size();i++) {
-			System.out.println("("+(i+1)+") "+DBTemporal.usuarios.get(i).getNombre());
+		for(int i = 0; i<DatosDB.usuarios.size();i++) {
+			System.out.println("("+(i+1)+") "+DatosDB.usuarios.get(i).getNombre());
 		}
-		cliente = DBTemporal.usuarios.get(input.nextInt()-1);
+		cliente = DatosDB.usuarios.get(input.nextInt()-1);
 		ccedit=cliente.getCedula();
 		System.out.println("¿Desea editar el nombre? (1) sí (otro) no");
 		if(input.nextInt()==1) {

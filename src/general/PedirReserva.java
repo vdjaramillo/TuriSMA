@@ -30,15 +30,15 @@ public class PedirReserva extends Behaviour {
 			Reserva rsv = new Reserva();
 			System.out.println("¿Qué cliente desea pedir una reserva?");
 			int i;
-			for(i = 0; i<DBTemporal.usuarios.size();i++) {
-				System.out.println("("+(i+1)+") "+DBTemporal.usuarios.get(i).getNombre());
+			for(i = 0; i<DatosDB.usuarios.size();i++) {
+				System.out.println("("+(i+1)+") "+DatosDB.usuarios.get(i).getNombre());
 			}
-			rsv.setCliente(DBTemporal.usuarios.get(input.nextInt()-1));
+			rsv.setCliente(DatosDB.usuarios.get(input.nextInt()-1));
 			System.out.println("¿En qué hotel desea pedir una reserva?");
-			for(i = 0; i<DBTemporal.hoteles.size();i++) {
-				System.out.println("("+(i+1)+") "+DBTemporal.hoteles.get(i).getNombreHotel());
+			for(i = 0; i<DatosDB.hoteles.size();i++) {
+				System.out.println("("+(i+1)+") "+DatosDB.hoteles.get(i).getNombreHotel());
 			}
-			rsv.setHotel(DBTemporal.hoteles.get(input.nextInt()-1));
+			rsv.setHotel(DatosDB.hoteles.get(input.nextInt()-1));
 			System.out.println("¿Qué tipo de habitación desea?");
 			int hab;
 			for(i = 0; i<rsv.getHotel().getHabitaciones().length;i++) {

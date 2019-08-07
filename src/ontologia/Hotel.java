@@ -6,7 +6,7 @@ import jade.util.leap.*;
 import jade.core.*;
 import java.util.LinkedList;
 
-import general.DBTemporal;
+import general.DatosDB;
 
 /**
 * Protege name: Hotel
@@ -28,14 +28,14 @@ public class Hotel implements Concept {
 	public static LinkedList<Hotel> getHoteles(float pres) {
 		boolean prueb=false;
 		LinkedList<Hotel> htlr = new LinkedList<>();
-		for(int i = 0; i<DBTemporal.hoteles.size();i++) {
-			for(int j =0; j<DBTemporal.hoteles.get(i).getHabitaciones().length;j++) {
-				if(DBTemporal.hoteles.get(i).getHabitaciones()[j].getPrecioNoche()<=pres) {
+		for(int i = 0; i<DatosDB.hoteles.size();i++) {
+			for(int j =0; j<DatosDB.hoteles.get(i).getHabitaciones().length;j++) {
+				if(DatosDB.hoteles.get(i).getHabitaciones()[j].getPrecioNoche()<=pres) {
 					prueb=true;
 				}
 			}
 			if(prueb) {
-				htlr.add(DBTemporal.hoteles.get(i));
+				htlr.add(DatosDB.hoteles.get(i));
 			}
 			prueb = false;
 		}

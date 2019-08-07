@@ -1,6 +1,8 @@
 package general;
 
 import java.io.Serializable;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
@@ -35,9 +37,28 @@ public class AlmacenarCliente extends Behaviour {
 		return true;
 	}
 	void almacenar() {
-		System.out.println("Almacenando");
-		DBTemporal.usuarios.add(cliente);
-		
+		Statement stmnt = null;
+		try {
+			ConnectionSQL.connect();
+			ConnectionSQL.conn.setAutoCommit(false);
+			stmnt = ConnectionSQL.conn.createStatement();
+			stmnt.executeUpdate("INSERT INTO cliente "
+					+ "(nombre,cedula,presupuesto,preferencias)"
+					+ "VALUES"
+					+ "('"+cliente.getNombre()+"',"+cliente.getCedula()+","+cliente.getPresupuesto()+","+cliente.getPreferencias()+")");
+			stmnt.close();
+			ConnectionSQL.conn.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				ConnectionSQL.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}		
 	}
 	void editar() {
 		System.out.println("Editando");

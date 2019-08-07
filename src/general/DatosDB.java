@@ -7,12 +7,11 @@ import ontologia.Hotel;
 import ontologia.Reserva;
 import ontologia.TipoHabitacion;
 
-public interface DBTemporal {
+public interface DatosDB {
 	LinkedList<Cliente> usuarios = new LinkedList<>();
 	LinkedList<Hotel> hoteles = new LinkedList<>();
 	LinkedList<Reserva> reservas = new LinkedList<>();
 	static void temporal() {
-		ConnectionSQL.connect();
 		usuarios.add(new Cliente("Sebas",1,1,1));
 		usuarios.add(new Cliente("Alex",1,1,1));
 		usuarios.add(new Cliente("Meme",1,1,1));

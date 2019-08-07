@@ -2,7 +2,7 @@ package agentes;
 
 import java.util.Scanner;
 
-import general.DBTemporal;
+import general.DatosDB;
 import general.MSGListenner;
 import general.TuriMSG;
 import jade.core.Agent;
@@ -13,7 +13,7 @@ public class AgenteSistema extends Agent {
 	Scanner input;
 	protected void setup() {
 		super.getAID().setLocalName("AgenteSistema");
-		DBTemporal.temporal();
+		DatosDB.temporal();
 		System.out.println("Bienvenido a TuriSMA \n");				
 		addBehaviour(new MSGListenner(this));
 		inicio(true);
