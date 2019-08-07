@@ -1,33 +1,54 @@
 package ontologia;
 
-import jade.content.Concept;
 
-public class TipoHabitacion implements Concept{
-	private String tipo;
-	private int cantidad;
-	private int precioNoche;
+import jade.content.*;
+import jade.util.leap.*;
+import jade.core.*;
+
+/**
+* Protege name: TipoHabitacion
+* @author ontology bean generator
+* @version 2019/08/4, 14:41:11
+*/
+public class TipoHabitacion implements Concept {
+
 	public TipoHabitacion() {}
 	public TipoHabitacion(String tipo, int cantidad, int precioNoche) {
 		setTipo(tipo);
 		setCantidad(cantidad);
 		setPrecioNoche(precioNoche);
 	}
-	public String getTipo() {
-		return tipo;
-	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-	public int getCantidad() {
-		return cantidad;
-	}
-	public void setCantidad(int cantidad) {
-		this.cantidad = cantidad;
-	}
-	public int getPrecioNoche() {
-		return precioNoche;
-	}
-	public void setPrecioNoche(int precio) {
-		this.precioNoche = precio;
-	}
+   /**
+* Protege name: tipo
+   */
+   private String tipo;
+   public void setTipo(String value) { 
+    this.tipo=value;
+   }
+   public String getTipo() {
+     return this.tipo;
+   }
+
+   /**
+* Protege name: precioNoche
+   */
+   private int precioNoche;
+   public void setPrecioNoche(int value) { 
+    this.precioNoche=value;
+   }
+   public int getPrecioNoche() {
+     return this.precioNoche;
+   }
+
+   /**
+* Protege name: cantidad
+   */
+   private int cantidad;
+   public void setCantidad(int value) { 
+    this.cantidad=value;
+   }
+   public int getCantidad() {
+     return this.cantidad;
+   }
+
 }

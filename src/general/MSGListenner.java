@@ -51,7 +51,7 @@ public class MSGListenner extends CyclicBehaviour{
 				myAgent.addBehaviour(new PedirReserva(myAgent));
 			}else if(msg.getContent().equals("EReserva")) {
 				//comportamiento para editar una reserva
-				myAgent.addBehaviour(new EditarReserva(myAgent,msg.getContentObject()));
+				myAgent.addBehaviour(new EditarReserva(myAgent));
 			}else if(msg.getContent().equals("ACliente")) {
 				//comportamiento para almacenar un usuario
 				try {

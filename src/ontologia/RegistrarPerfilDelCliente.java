@@ -8,7 +8,7 @@ import jade.core.*;
 /**
 * Protege name: RegistrarPerfilDelCliente
 * @author ontology bean generator
-* @version 2019/08/2, 23:50:21
+* @version 2019/08/4, 14:41:11
 */
 public class RegistrarPerfilDelCliente implements Predicate {
 
@@ -21,28 +21,6 @@ public class RegistrarPerfilDelCliente implements Predicate {
    }
    public Cliente getCliente() {
      return this.cliente;
-   }
-
-   /**
-* Protege name: agenteSistema
-   */
-   private AgenteSistema agenteSistema;
-   public void setAgenteSistema(AgenteSistema value) { 
-    this.agenteSistema=value;
-   }
-   public AgenteSistema getAgenteSistema() {
-     return this.agenteSistema;
-   }
-
-   /**
-* Protege name: agenteCliente
-   */
-   private AgenteClientes agenteCliente;
-   public void setAgenteCliente(AgenteClientes value) { 
-    this.agenteCliente=value;
-   }
-   public AgenteClientes getAgenteCliente() {
-     return this.agenteCliente;
    }
 
 }

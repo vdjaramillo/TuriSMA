@@ -8,10 +8,17 @@ import jade.core.*;
 /**
 * Protege name: Reserva
 * @author ontology bean generator
-* @version 2019/08/2, 23:50:21
+* @version 2019/08/7, 10:54:08
 */
 public class Reserva implements Concept {
 
+	public Reserva() {}
+	public Reserva(int id, Cliente cliente, Hotel hotel, String nombreHabitacion) {
+		setCliente(cliente);
+		this.id = id;
+		setHotel(hotel);
+		setNombreHabitacion(nombreHabitacion);	
+	}
    /**
 * Protege name: cliente
    */
@@ -24,7 +31,18 @@ public class Reserva implements Concept {
    }
 
    /**
-* Protege name: NombreHabitacion
+* Protege name: fecha
+   */
+   private String fecha;
+   public void setFecha(String value) { 
+    this.fecha=value;
+   }
+   public String getFecha() {
+     return this.fecha;
+   }
+
+   /**
+* Protege name: NumeroHabitacion
    */
    private String nombreHabitacion;
    public void setNombreHabitacion(String value) { 
@@ -33,6 +51,7 @@ public class Reserva implements Concept {
    public String getNombreHabitacion() {
      return this.nombreHabitacion;
    }
+
    /**
 * Protege name: hotel
    */
@@ -42,6 +61,14 @@ public class Reserva implements Concept {
    }
    public Hotel getHotel() {
      return this.hotel;
+   }
+
+   /**
+* Protege name: id
+   */
+   private int id;
+   public int getId() {
+     return this.id;
    }
 
 }

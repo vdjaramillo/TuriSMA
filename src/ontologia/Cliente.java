@@ -8,9 +8,10 @@ import jade.core.*;
 /**
 * Protege name: Cliente
 * @author ontology bean generator
-* @version 2019/08/2, 23:50:21
+* @version 2019/08/4, 14:41:11
 */
-public class Cliente implements Concept{
+public class Cliente implements Concept {
+
 	public Cliente() {}
 	public Cliente(String n, int cc, float ppto, int pfr) {
 		setNombre(n);
@@ -41,17 +42,6 @@ public class Cliente implements Concept{
    }
 
    /**
-* Protege name: Presupuesto
-   */
-   private float presupuesto;
-   public void setPresupuesto(float value) { 
-    this.presupuesto=value;
-   }
-   public float getPresupuesto() {
-     return this.presupuesto;
-   }
-
-   /**
 * Protege name: Preferencias
    */
    private int preferencias;
@@ -60,6 +50,17 @@ public class Cliente implements Concept{
    }
    public int getPreferencias() {
      return this.preferencias;
+   }
+
+   /**
+* Protege name: Presupuesto
+   */
+   private float presupuesto;
+   public void setPresupuesto(float value) { 
+    this.presupuesto=value;
+   }
+   public float getPresupuesto() {
+     return this.presupuesto;
    }
 
 }

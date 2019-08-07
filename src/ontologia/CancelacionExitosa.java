@@ -8,7 +8,7 @@ import jade.core.*;
 /**
 * Protege name: CancelacionExitosa
 * @author ontology bean generator
-* @version 2019/08/2, 23:50:21
+* @version 2019/08/4, 14:41:11
 */
 public class CancelacionExitosa implements AgentAction {
 

@@ -42,7 +42,8 @@ public class AlmacenarCliente extends Behaviour {
 			ConnectionSQL.connect();
 			ConnectionSQL.conn.setAutoCommit(false);
 			stmnt = ConnectionSQL.conn.createStatement();
-			stmnt.executeUpdate("INSERT INTO cliente "
+			stmnt.executeUpdate(""
+					+ "INSERT INTO cliente "
 					+ "(nombre,cedula,presupuesto,preferencias)"
 					+ "VALUES"
 					+ "('"+cliente.getNombre()+"',"+cliente.getCedula()+","+cliente.getPresupuesto()+","+cliente.getPreferencias()+")");

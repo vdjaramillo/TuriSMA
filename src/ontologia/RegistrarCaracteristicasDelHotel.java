@@ -8,20 +8,9 @@ import jade.core.*;
 /**
 * Protege name: RegistrarCaracteristicasDelHotel
 * @author ontology bean generator
-* @version 2019/08/2, 23:50:21
+* @version 2019/08/4, 14:41:11
 */
 public class RegistrarCaracteristicasDelHotel implements Predicate {
-
-   /**
-* Protege name: agenteSistema
-   */
-   private AgenteSistema agenteSistema;
-   public void setAgenteSistema(AgenteSistema value) { 
-    this.agenteSistema=value;
-   }
-   public AgenteSistema getAgenteSistema() {
-     return this.agenteSistema;
-   }
 
    /**
 * Protege name: hotel
@@ -32,17 +21,6 @@ public class RegistrarCaracteristicasDelHotel implements Predicate {
    }
    public Hotel getHotel() {
      return this.hotel;
-   }
-
-   /**
-* Protege name: agenteHotel
-   */
-   private AgenteHoteles agenteHotel;
-   public void setAgenteHotel(AgenteHoteles value) { 
-    this.agenteHotel=value;
-   }
-   public AgenteHoteles getAgenteHotel() {
-     return this.agenteHotel;
    }
 
 }
