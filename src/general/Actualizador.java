@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
 import ontologia.Cliente;
@@ -14,6 +13,7 @@ import ontologia.Reserva;
 import ontologia.TipoHabitacion;
 
 public class Actualizador extends Behaviour {
+	private static final long serialVersionUID = 344078588093576298L;
 	int code;
 	// 1 usuarios
 	// 2 hoteles
@@ -27,21 +27,16 @@ public class Actualizador extends Behaviour {
 		switch(code) {
 			case 1:
 				clientes();
-				for(int i = 0 ; i<DatosDB.usuarios.size();i++) {
-					System.out.println(DatosDB.usuarios.get(i).getNombre());
-				}
+				System.out.println("Clientes cargados");
 				break;
 			case 2:
 				hoteles();
-				for(int i = 0 ; i<DatosDB.hoteles.size();i++) {
-					System.out.println(DatosDB.hoteles.get(i).getNombreHotel());
-				}
+				System.out.println("Hoteles cargados");
+				
 				break;
 			case 3:
 				reservas();
-				for(int i = 0 ; i<DatosDB.reservas.size();i++) {
-					System.out.println(DatosDB.reservas.get(i).getId());
-				}
+				System.out.println("Reservas cargadas");
 				break;
 		}
 	}
@@ -208,7 +203,6 @@ public class Actualizador extends Behaviour {
 	}
 	@Override
 	public boolean done() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 }

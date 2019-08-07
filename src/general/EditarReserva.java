@@ -3,7 +3,6 @@ package general;
 import java.util.Scanner;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
-import jade.lang.acl.ACLMessage;
 import ontologia.Reserva;
 
 public class EditarReserva extends Behaviour {

@@ -38,10 +38,11 @@ public class AlmacenarReserva extends Behaviour {
 		    conn2.setAutoCommit(false);
 			stmnt = conn2.createStatement();
 			stmnt.executeUpdate(""
-					+ "INSERT INTO reserva "
+					+ "INSERT INTO reserva (cliente,hotel,tipo_habitacion,fecha)"
 					+ "VALUES("+rh.getReserva().getCliente().getCedula()+",'"
 							+ rh.getReserva().getHotel().getNombreHotel()+"','"
-							+ rh.getReserva().getNombreHabitacion()+"','aunno')");
+							+ rh.getReserva().getNombreHabitacion()+"','"
+							+ rh.getReserva().getFecha()+"')");
 			stmnt.close();
 			conn2.commit();
 		} catch (SQLException e) {

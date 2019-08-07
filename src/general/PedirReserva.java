@@ -28,7 +28,7 @@ public class PedirReserva extends Behaviour {
 			@SuppressWarnings("resource")
 			Scanner input = new Scanner(System.in);
 			Reserva rsv = new Reserva();
-			System.out.println("¿Qué cliente desea pedir una reserva?");
+			System.out.println(myAgent.getLocalName()+"¿Qué cliente desea pedir una reserva?");
 			int i;
 			for(i = 0; i<DatosDB.usuarios.size();i++) {
 				System.out.println("("+(i+1)+") "+DatosDB.usuarios.get(i).getNombre());
@@ -48,10 +48,14 @@ public class PedirReserva extends Behaviour {
 			}
 			hab = input.nextInt()-1;
 			rsv.setNombreHabitacion(rsv.getHotel().getHabitaciones()[hab].getTipo());
+			System.out.println("¿Para qué fecha? dd/mm/yyyy");
+			input = new Scanner(System.in);
+			rsv.setFecha(input.nextLine());
 			System.out.println("Confirma los datos de tu reserva \n"
 					+ "Hotel: "+rsv.getHotel().getNombreHotel()+"\n"
 					+ "Tipo Habitación: "+rsv.getNombreHabitacion()+"\n"
-					+ "Para el usuario: "+rsv.getCliente().getNombre());
+					+ "Para el usuario: "+rsv.getCliente().getNombre()+"\n"
+					+ "Para: "+rsv.getFecha());
 			//verificacion del presupuesto
 			if(rsv.getHotel().getHabitaciones()[hab].getCantidad()>rsv.getCliente().getPresupuesto()) {
 				System.out.println("El costo de la habitacion es mayor \n"
@@ -96,10 +100,13 @@ public class PedirReserva extends Behaviour {
 							}
 							hab = input.nextInt()-1;
 							rsv.setNombreHabitacion(rsv.getHotel().getHabitaciones()[hab].getTipo());
+							System.out.println("¿Para qué fecha? dd/mm/yyyy");
+							rsv.setFecha(input.nextLine());
 							System.out.println("Confirma los datos de tu reserva \n"
 									+ "Hotel: "+rsv.getHotel().getNombreHotel()+"\n"
 									+ "Tipo Habitación: "+rsv.getNombreHabitacion()+"\n"
-									+ "Para el usuario: "+rsv.getCliente().getNombre());
+									+ "Para el usuario: "+rsv.getCliente().getNombre()+"\n"
+											+ "Para: "+rsv.getFecha());
 						}
 					}
 				}

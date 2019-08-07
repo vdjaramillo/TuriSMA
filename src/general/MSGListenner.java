@@ -1,5 +1,4 @@
 package general;
-import agentes.AgenteSistema;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
@@ -45,7 +44,7 @@ public class MSGListenner extends CyclicBehaviour{
 				myAgent.addBehaviour(new RegistrarHotel(myAgent));
 			}else if(msg.getContent().equals("Volver")){
 				//se recarga el menú inicial
-				((AgenteSistema)myAgent).inicio(true);
+				myAgent.addBehaviour(new MenuInicial(myAgent));
 			}else if(msg.getContent().equals("PReserva")) {
 				//comportamiento para pedir una reserva
 				myAgent.addBehaviour(new PedirReserva(myAgent));

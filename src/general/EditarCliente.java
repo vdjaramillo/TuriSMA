@@ -10,6 +10,7 @@ public class EditarCliente extends Behaviour {
 	private static final long serialVersionUID = -8505661414638648402L;
 	Cliente cliente;
 	RegistrarPerfilDelCliente rpc;
+	Scanner input;
 	int ccedit;
 	public EditarCliente(Agent myAgent) {
 		super(myAgent);
@@ -18,8 +19,8 @@ public class EditarCliente extends Behaviour {
 	@SuppressWarnings("resource")
 	@Override
 	public void action() {
-		Scanner input = new Scanner(System.in);
-		System.out.println("¿Qué cliente desea editar?");
+		input = new Scanner(System.in);
+		System.out.println(myAgent.getLocalName()+" ¿Qué cliente desea editar?");
 		for(int i = 0; i<DatosDB.usuarios.size();i++) {
 			System.out.println("("+(i+1)+") "+DatosDB.usuarios.get(i).getNombre());
 		}

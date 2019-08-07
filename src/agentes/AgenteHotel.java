@@ -9,7 +9,8 @@ public class AgenteHotel extends Agent {
 
 	protected void setup() {
 		super.getAID().setLocalName("AgenteHotel");
-		addBehaviour(new Actualizador(this,2));
 		addBehaviour(new MSGListenner(this));
+		addBehaviour(new Actualizador(this,2));
+		
 	}
 }

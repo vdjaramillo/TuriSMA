@@ -9,7 +9,8 @@ public class AgenteCliente extends Agent {
 
 	protected void setup() {
 		super.getAID().setLocalName("AgenteCliente");
-		addBehaviour(new Actualizador(this,1));
 		addBehaviour(new MSGListenner(this));
+		addBehaviour(new Actualizador(this,1));
+		
 	}
 }
