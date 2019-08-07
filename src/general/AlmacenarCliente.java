@@ -38,7 +38,7 @@ public class AlmacenarCliente extends Behaviour {
 		myAgent.send(msj);
 		return true;
 	}
-	void almacenar() {
+	private void almacenar() {
 		Statement stmnt = null;
 		Connection conn2 = null;
 		try {
@@ -64,7 +64,7 @@ public class AlmacenarCliente extends Behaviour {
 			}
 		}		
 	}
-	void editar() {
+	private void editar() {
 		System.out.println("Editando");
 	}
 }

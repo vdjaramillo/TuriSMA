@@ -27,16 +27,12 @@ public class Actualizador extends Behaviour {
 		switch(code) {
 			case 1:
 				clientes();
-				System.out.println("Clientes cargados");
 				break;
 			case 2:
 				hoteles();
-				System.out.println("Hoteles cargados");
-				
 				break;
 			case 3:
 				reservas();
-				System.out.println("Reservas cargadas");
 				break;
 		}
 	}

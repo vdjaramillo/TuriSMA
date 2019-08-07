@@ -15,17 +15,31 @@ public class AlmacenarReserva extends Behaviour {
 	private static final long serialVersionUID = 1589756164826324694L;
 	ReservarHotel rh;
 	int edit = -1;
+	int elim = -1;
 	public AlmacenarReserva(Agent myAgent, Serializable contentObject) {
 		super(myAgent);
 		rh = (ReservarHotel) contentObject;
 	}
+	public AlmacenarReserva(Agent myAgent, Serializable contentObject, int parametro1) {
+		this(myAgent, contentObject);
+		edit = parametro1;
+	}
+	public AlmacenarReserva(Agent myAgent, Serializable contentObject, int parametro1, int parametro2) {
+		this(myAgent,contentObject,parametro1);
+		elim = parametro2;
+	}
 	public void action() {
 		System.out.println("Reservando");
-		if(edit==-1) {
+		if(edit==-1 && elim ==-1) {
 			almacenar();
+		}else if(elim!=-1){
+			eliminar();
 		}else {
 			editar();
 		}
+	}
+	private void eliminar() {
+		
 	}
 	private void editar() {
 		

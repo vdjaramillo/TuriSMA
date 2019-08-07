@@ -3,6 +3,7 @@ import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.MessageTemplate;
+import ontologia.TuriSMAOntology;
 
 public class MSGListenner extends CyclicBehaviour{
 		
@@ -26,10 +27,9 @@ public class MSGListenner extends CyclicBehaviour{
 	public void action() {
 		AID[] aid = new AID[1];
 		aid[0] = myAgent.getAID();
-		System.out.println("El que escucha es: " + myAgent.getAID().getLocalName());
 		MessageTemplate mt = MessageTemplate.and(
 				MessageTemplate.MatchReceiver(aid),
-				MessageTemplate.MatchOntology("TuriSMA")
+				MessageTemplate.MatchOntology(TuriSMAOntology.ONTOLOGY_NAME)
 			);
 		msg = (TuriMSG) myAgent.receive(mt);  				
 		if(msg != null) {
@@ -61,7 +61,7 @@ public class MSGListenner extends CyclicBehaviour{
 			}else if(msg.getContent().equals("AECliente")){
 				//comportamiento para almacenar la edicion de un cliente
 				try {
-					myAgent.addBehaviour(new AlmacenarCliente(myAgent,msg.getContentObject(),msg.getParametro()));
+					myAgent.addBehaviour(new AlmacenarCliente(myAgent,msg.getContentObject(),msg.getParametro1()));
 				} catch (Exception e) {
 					System.out.println("Error al comportar el almacenamiento del usuario");
 				}
@@ -80,8 +80,13 @@ public class MSGListenner extends CyclicBehaviour{
 					System.out.println("Error al comportar el almacenamiento de la reserva");
 				}
 			}else if(msg.getContent().equals("AEReserva")) {
-				//comportamiento para almacenar la edición
-				//de una reserva
+				//edición de una reserva
+				myAgent.addBehaviour(new AlmacenarReserva(myAgent,msg.getContentObject(),msg.getParametro1()));
+				
+			}else if(msg.getContent().equals("AEReserva")) {
+				//eliminación de una reserva 
+				myAgent.addBehaviour(new AlmacenarReserva(myAgent,msg.getContentObject(),msg.getParametro1(),msg.parametro2));
+				
 			}else if(msg.getContent().equals("DHabitacion")) {
 				//comportamiento para disminuir la cantidad
 				//de habitaciones de un hotel

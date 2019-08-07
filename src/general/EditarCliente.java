@@ -53,7 +53,7 @@ public class EditarCliente extends Behaviour {
 	public boolean done() {
 		try {
 			TuriMSG msj = new TuriMSG("AgenteSistema","AECliente",rpc,ACLMessage.INFORM);
-			msj.setParametro(ccedit);
+			msj.setParametro1(ccedit);
 			myAgent.send(msj);
 		} catch (Exception e) {
 			System.out.println("Error al cargar/enviar el usuario");

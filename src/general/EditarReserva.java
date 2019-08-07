@@ -8,9 +8,6 @@ import ontologia.Reserva;
 public class EditarReserva extends Behaviour {
 	Reserva reserva;
 	int idedit;
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5383558470414502313L;
 	boolean edit = false;
 	public EditarReserva(Agent myAgent) {
@@ -23,7 +20,7 @@ public class EditarReserva extends Behaviour {
 			Scanner input = new Scanner(System.in);
 			System.out.println("¿Qué reserva desea editar?");
 			for(int i = 0; i<DatosDB.reservas.size();i++) {
-				System.out.println("("+(i+1)+") "+DatosDB.usuarios.get(i).getNombre());
+				System.out.println("("+(i+1)+") "+DatosDB.reservas.get(i).getCliente().getCedula()+" en : "+DatosDB.reservas.get(i).getHotel().getNombreHotel()+" el: "+DatosDB.reservas.get(i).getFecha());
 			}
 			reserva = DatosDB.reservas.get(input.nextInt()-1);
 			idedit=reserva.getId();
