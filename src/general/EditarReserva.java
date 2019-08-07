@@ -1,5 +1,7 @@
 package general;
 
+import java.io.Serializable;
+
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
@@ -13,6 +15,10 @@ public class EditarReserva extends Behaviour {
 
 	public EditarReserva(Agent myAgent) {
 		super(myAgent);
+	}
+
+	public EditarReserva(Agent myAgent, Serializable contentObject) {
+		this(myAgent);
 	}
 
 	@Override

@@ -12,6 +12,7 @@ public interface DBTemporal {
 	LinkedList<Hotel> hoteles = new LinkedList<>();
 	LinkedList<Reserva> reservas = new LinkedList<>();
 	static void temporal() {
+		ConnectionSQL.connect();
 		usuarios.add(new Cliente("Sebas",1,1,1));
 		usuarios.add(new Cliente("Alex",1,1,1));
 		usuarios.add(new Cliente("Meme",1,1,1));

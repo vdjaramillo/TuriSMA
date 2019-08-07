@@ -25,7 +25,7 @@ public class AgenteSistema extends Agent {
 		while(wh) {
 			input = new Scanner(System.in);
 			System.out.println("¿Qué desea hacer? \n"
-					+ "(0) Registrar Cliente"
+					+ "(0) Registrar Cliente \n"
 					+ "(1) Editar Cliente \n"
 					+ "(2) Registrar Hotel \n"
 					+ "(3) Pedir Reservación \n"
@@ -38,14 +38,17 @@ public class AgenteSistema extends Agent {
 			switch(in) {
 				case 0:
 					msj.setReceptor("AgenteCliente");
-		        	msj.setContent("RUsuario");
+		        	msj.setContent("RCliente");
 		        	send(msj);
 		        	wh = false;
 		        	break;
 				case 1:
 					//capacidad no implementada
 					//cambiar a false al implementar
-					wh = true;
+					msj.setReceptor("AgenteCliente");
+		        	msj.setContent("ECliente");
+		        	send(msj);
+					wh = false;
 					break;
 				case 2:
 					msj.setReceptor("AgenteHotel");

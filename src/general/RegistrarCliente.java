@@ -7,14 +7,14 @@ import jade.lang.acl.ACLMessage;
 import ontologia.Cliente;
 import ontologia.RegistrarPerfilDelCliente;
 
-public class RegistrarUsuario extends Behaviour {
+public class RegistrarCliente extends Behaviour {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 926330579801615147L;
 	RegistrarPerfilDelCliente rpc;
 	Scanner input;
-	public RegistrarUsuario(Agent myAgent) {
+	public RegistrarCliente(Agent myAgent) {
 		super(myAgent);
 	}
 
@@ -37,10 +37,10 @@ public class RegistrarUsuario extends Behaviour {
 	@Override
 	public boolean done() {
 		try {
-			TuriMSG msj = new TuriMSG("AgenteSistema","AUsuario",rpc,ACLMessage.INFORM);
+			TuriMSG msj = new TuriMSG("AgenteSistema","ACliente",rpc,ACLMessage.INFORM);
 			myAgent.send(msj);
 		} catch (Exception e) {
-			System.out.println("Error al cargar/enviar el usuario");
+			System.out.println("Error al cargar/enviar el cliente");
 		}
 		return true;
 	}

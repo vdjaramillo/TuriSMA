@@ -8,17 +8,25 @@ import jade.lang.acl.ACLMessage;
 import ontologia.Cliente;
 import ontologia.RegistrarPerfilDelCliente;
 
-public class AlmacenarUsuario extends Behaviour {
+public class AlmacenarCliente extends Behaviour {
 	private static final long serialVersionUID = 3476774726773649822L;
 	Cliente cliente;
-	public AlmacenarUsuario(Agent myAgent, Serializable rpc) {
+	int editar = -1;
+	public AlmacenarCliente(Agent myAgent, Serializable rpc) {
 		super(myAgent);
 		cliente = ((RegistrarPerfilDelCliente)rpc).getCliente();
 	}
+	public AlmacenarCliente(Agent myAgent, Serializable contentObject, int edit) {
+		this(myAgent,contentObject);
+		editar=edit;
+	}
 	@Override
 	public void action() {
-		System.out.println("Almacenando a: "+cliente.getNombre());
-		DBTemporal.usuarios.add(cliente);
+		if(editar==-1) {
+			almacenar();
+		}else {
+			editar();
+		}
 	}
 	@Override
 	public boolean done() {
@@ -26,5 +34,12 @@ public class AlmacenarUsuario extends Behaviour {
 		myAgent.send(msj);
 		return true;
 	}
-
+	void almacenar() {
+		System.out.println("Almacenando");
+		DBTemporal.usuarios.add(cliente);
+		
+	}
+	void editar() {
+		System.out.println("Editando");
+	}
 }

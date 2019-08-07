@@ -34,9 +34,12 @@ public class MSGListenner extends CyclicBehaviour{
 			);
 		msg = (TuriMSG) myAgent.receive(mt);  				
 		if(msg != null) {
-			if(msg.getContent().equals("RUsuario")) {
+			if(msg.getContent().equals("RCliente")) {
 				//comportamiento para registrar un usuario/cliente
-				myAgent.addBehaviour(new RegistrarUsuario(myAgent));
+				myAgent.addBehaviour(new RegistrarCliente(myAgent));
+			}else if(msg.getContent().equals("ECliente")){
+				//comportamiento para registrar un usuario/cliente
+				myAgent.addBehaviour(new EditarCliente(myAgent));
 			}else if(msg.getContent().equals("RHotel")) {
 				//comportamiento para registrar un hotel
 				myAgent.addBehaviour(new RegistrarHotel(myAgent));
@@ -48,11 +51,18 @@ public class MSGListenner extends CyclicBehaviour{
 				myAgent.addBehaviour(new PedirReserva(myAgent));
 			}else if(msg.getContent().equals("EReserva")) {
 				//comportamiento para editar una reserva
-				myAgent.addBehaviour(new EditarReserva(myAgent));
-			}else if(msg.getContent().equals("AUsuario")) {
+				myAgent.addBehaviour(new EditarReserva(myAgent,msg.getContentObject()));
+			}else if(msg.getContent().equals("ACliente")) {
 				//comportamiento para almacenar un usuario
 				try {
-					myAgent.addBehaviour(new AlmacenarUsuario(myAgent,msg.getContentObject()));
+					myAgent.addBehaviour(new AlmacenarCliente(myAgent,msg.getContentObject()));
+				} catch (Exception e) {
+					System.out.println("Error al comportar el almacenamiento del usuario");
+				}
+			}else if(msg.getContent().equals("AECliente")){
+				//comportamiento para almacenar la edicion de un cliente
+				try {
+					myAgent.addBehaviour(new AlmacenarCliente(myAgent,msg.getContentObject(),msg.getParametro()));
 				} catch (Exception e) {
 					System.out.println("Error al comportar el almacenamiento del usuario");
 				}

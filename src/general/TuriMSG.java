@@ -11,6 +11,7 @@ public class TuriMSG extends ACLMessage {
 	private static final long serialVersionUID = -1205981458725310907L;
 	String contenido;
 	Serializable objeto;
+	int parametro;
 	public TuriMSG(int performativa) {
 		super(performativa);
     	setOntology(TuriSMAOntology.ONTOLOGY_NAME);
@@ -44,5 +45,11 @@ public class TuriMSG extends ACLMessage {
 	}
 	public Serializable getContentObject() {
 		return objeto;
+	}
+	public int getParametro() {
+		return parametro;
+	}
+	public void setParametro(int p) {
+		parametro = p;
 	}
 }
