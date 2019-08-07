@@ -4,5 +4,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jADE"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SQLite Controller"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Jade"/>
+	<classpathentry kind="lib" path="C:/Users/Morales/Downloads/sqlite-jdbc-3.27.2.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
