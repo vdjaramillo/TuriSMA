@@ -8,6 +8,7 @@ import ontologia.Reserva;
 import ontologia.TipoHabitacion;
 
 public interface DatosDB {
+	static final String url = "jdbc:sqlite:db/TuriSMA.db";
 	LinkedList<Cliente> usuarios = new LinkedList<>();
 	LinkedList<Hotel> hoteles = new LinkedList<>();
 	LinkedList<Reserva> reservas = new LinkedList<>();

@@ -86,6 +86,12 @@ public class MSGListenner extends CyclicBehaviour{
 			}else if(msg.getContent().equals("DHabitacion")) {
 				//comportamiento para disminuir la cantidad
 				//de habitaciones de un hotel
+			}else if(msg.getContent().equals("UCliente")) {
+				
+			}else if(msg.getContent().equals("UReserva")) {
+				
+			}else if(msg.getContent().equals("UHotel")) {
+				
 			}
 			escucha = true;
 		}else {

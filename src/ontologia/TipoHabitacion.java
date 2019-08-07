@@ -13,7 +13,7 @@ import jade.core.*;
 public class TipoHabitacion implements Concept {
 
 	public TipoHabitacion() {}
-	public TipoHabitacion(String tipo, int cantidad, int precioNoche) {
+	public TipoHabitacion(String tipo, int cantidad, float precioNoche) {
 		setTipo(tipo);
 		setCantidad(cantidad);
 		setPrecioNoche(precioNoche);
@@ -32,11 +32,11 @@ public class TipoHabitacion implements Concept {
    /**
 * Protege name: precioNoche
    */
-   private int precioNoche;
-   public void setPrecioNoche(int value) { 
+   private float precioNoche;
+   public void setPrecioNoche(float value) { 
     this.precioNoche=value;
    }
-   public int getPrecioNoche() {
+   public float getPrecioNoche() {
      return this.precioNoche;
    }
 

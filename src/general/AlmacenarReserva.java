@@ -1,6 +1,8 @@
 package general;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -30,23 +32,24 @@ public class AlmacenarReserva extends Behaviour {
 	}
 	private void almacenar() {
 		Statement stmnt = null;
+		Connection conn2 = null;
 		try {
-			ConnectionSQL.connect();
-			ConnectionSQL.conn.setAutoCommit(false);
-			stmnt = ConnectionSQL.conn.createStatement();
+			conn2 = DriverManager.getConnection(DatosDB.url);
+		    conn2.setAutoCommit(false);
+			stmnt = conn2.createStatement();
 			stmnt.executeUpdate(""
 					+ "INSERT INTO reserva "
 					+ "VALUES("+rh.getReserva().getCliente().getCedula()+",'"
 							+ rh.getReserva().getHotel().getNombreHotel()+"','"
 							+ rh.getReserva().getNombreHabitacion()+"','aunno')");
 			stmnt.close();
-			ConnectionSQL.conn.commit();
+			conn2.commit();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			try {
-				ConnectionSQL.close();
+				conn2.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -43,8 +43,6 @@ public class AgenteSistema extends Agent {
 		        	wh = false;
 		        	break;
 				case 1:
-					//capacidad no implementada
-					//cambiar a false al implementar
 					msj.setReceptor("AgenteCliente");
 		        	msj.setContent("ECliente");
 		        	send(msj);

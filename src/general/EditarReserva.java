@@ -23,25 +23,38 @@ public class EditarReserva extends Behaviour {
 			@SuppressWarnings("resource")
 			Scanner input = new Scanner(System.in);
 			System.out.println("¿Qué reserva desea editar?");
-			for(int i = 0; i<DatosDB.usuarios.size();i++) {
+			for(int i = 0; i<DatosDB.reservas.size();i++) {
 				System.out.println("("+(i+1)+") "+DatosDB.usuarios.get(i).getNombre());
 			}
-		reserva = DatosDB.reservas.get(input.nextInt()-1);
+			reserva = DatosDB.reservas.get(input.nextInt()-1);
 			idedit=reserva.getId();
-			
+			System.out.println("¿Desea cancelar la reserva? (1) sí (otro) no");
+			if(input.nextInt()==1) {
+				//código para cancelar la reserva
+				return;
+			}
+			System.out.println("¿Desea cambiar de hotel? (1) sí (otro) no");
+			if(input.nextInt()==1) {
+				//código para cambiar de hotel
+			}
+			System.out.println("¿Desea cambiar de habitación? (1) sí (otro) no");
+			if(input.nextInt()==1) {
+				//código para cambiar de habitación
+			}
 		}else {
 			System.out.println("No hay reservas para editar");
 		}
 	}
 	@Override
 	public boolean done() {
-		ACLMessage msj;
+		/*ACLMessage msj;
 		if(edit) {
 			msj = new TuriMSG("AgenteSistema","Volver",ACLMessage.INFORM);
-		 	}else {
+		}else{
 			msj = new TuriMSG("AgenteSistema","Volver",ACLMessage.INFORM);
 		}
-		myAgent.send(msj);
+		myAgent.send(msj);*/
+		System.out.println("Cancelado");
     	return true;
 	}
 

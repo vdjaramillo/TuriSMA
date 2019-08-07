@@ -13,11 +13,12 @@ import jade.core.*;
 public class Reserva implements Concept {
 
 	public Reserva() {}
-	public Reserva(int id, Cliente cliente, Hotel hotel, String nombreHabitacion) {
+	public Reserva(int id, Cliente cliente, Hotel hotel, String nombreHabitacion, String fecha) {
 		setCliente(cliente);
 		this.id = id;
 		setHotel(hotel);
 		setNombreHabitacion(nombreHabitacion);	
+		setFecha(fecha);
 	}
    /**
 * Protege name: cliente

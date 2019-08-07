@@ -2,8 +2,6 @@ package ontologia;
 
 
 import jade.content.*;
-import jade.util.leap.*;
-import jade.core.*;
 import java.util.LinkedList;
 
 import general.DatosDB;
