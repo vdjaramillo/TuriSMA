@@ -29,7 +29,6 @@ public class AlmacenarReserva extends Behaviour {
 		elim = parametro2;
 	}
 	public void action() {
-		System.out.println("Reservando");
 		if(edit==-1 && elim ==-1) {
 			almacenar();
 		}else if(elim!=-1){
@@ -39,10 +38,10 @@ public class AlmacenarReserva extends Behaviour {
 		}
 	}
 	private void eliminar() {
-		
+		System.out.println("Eliminando reserva "+edit);
 	}
 	private void editar() {
-		
+		System.out.println("Editando reserva "+edit);
 	}
 	private void almacenar() {
 		Statement stmnt = null;

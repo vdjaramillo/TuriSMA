@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 import jade.core.AID;
 import jade.lang.acl.ACLMessage;
+import ontologia.Reserva;
 import ontologia.TuriSMAOntology;
 
 public class TuriMSG extends ACLMessage {
@@ -30,6 +31,7 @@ public class TuriMSG extends ACLMessage {
 		this(nombreReceptor,contenido,performativa);
 		setContentObject(objeto);
 	}
+	
 	public void setReceptor(String nombreReceptor) {
 		AID id = new AID();
 		id.setLocalName(nombreReceptor);
