@@ -47,6 +47,7 @@ public class EditarReserva extends Behaviour {
 				return;
 			}
 			System.out.println("¿Desea cambiar de hotel? (1) sí (otro) no");
+			boolean chotel = false;
 			if(input.nextInt()==1) {
 				edit=true;
 				System.out.println("Elija el nuevo hotel");
@@ -54,15 +55,25 @@ public class EditarReserva extends Behaviour {
 					System.out.println("("+(i+1)+") "+DatosDB.hoteles.get(i).getNombreHotel());
 				}
 				reserva.setHotel(DatosDB.hoteles.get(input.nextInt()-1));
+				chotel = true;
 			}
-			System.out.println("¿Desea cambiar de habitación? (1) sí (otro) no");
-			if(input.nextInt()==1) {
-				edit = true;
+			if(!chotel) {
+				System.out.println("¿Desea cambiar de habitación? (1) sí (otro) no");
+				if(input.nextInt()==1) {
+					edit = true;
+					System.out.println("Elija la nueva habitación");
+					for(int i = 0; i<reserva.getHotel().getHabitaciones().length;i++) {
+						System.out.println("("+(i+1)+") "+reserva.getHotel().getHabitaciones()[i].getTipo());
+					}
+					reserva.setNombreHabitacion(reserva.getHotel().getHabitaciones()[input.nextInt()-1].getTipo());
+				}
+			}else{
 				System.out.println("Elija la nueva habitación");
 				for(int i = 0; i<reserva.getHotel().getHabitaciones().length;i++) {
 					System.out.println("("+(i+1)+") "+reserva.getHotel().getHabitaciones()[i].getTipo());
 				}
 				reserva.setNombreHabitacion(reserva.getHotel().getHabitaciones()[input.nextInt()-1].getTipo());
+			
 			}
 			System.out.println("¿Desea cambiar de fecha? (1) sí (otro) no");
 			if(input.nextInt()==1) {
