@@ -26,14 +26,16 @@ public class AlmacenarReserva extends Behaviour {
 		super(myAgent);
 		rh = (ReservarHotel) contentObject;
 	}
-	public AlmacenarReserva(Agent myAgent, Serializable contentObject, int parametro1) {
+	public AlmacenarReserva(Agent myAgent, Serializable contentObject, int parametro1, Object preserva) {
 		this(myAgent, contentObject);
 		edit = parametro1;
-	}
-	public AlmacenarReserva(Agent myAgent, Serializable contentObject, int parametro1, int parametro2, Object preserva) {
-		this(myAgent,contentObject,parametro1);
-		elim = parametro2;
 		this.preserva = (Reserva) preserva;
+	}
+	public AlmacenarReserva(Agent myAgent, Serializable contentObject, int parametro1, int parametro2) {
+		this(myAgent,contentObject);
+		edit = (parametro1);
+		elim = parametro2;
+		
 	}
 	public void action() {
 		if(edit==-1 && elim ==-1) {
@@ -47,12 +49,13 @@ public class AlmacenarReserva extends Behaviour {
 	private void eliminar() {
 		Statement stmnt = null;
 		Connection conn2 = null;
+		reserva = rh.getReserva();
 		try {
 			conn2 = DriverManager.getConnection(DatosDB.url);
 		    conn2.setAutoCommit(false);
 			stmnt=conn2.createStatement();
-			stmnt.executeUpdate("DELETE reserva where id = "+reserva.getId()+";");
-			stmnt.executeUpdate("UPDATE tipo_habitacion set cantidad = cantidad +1 where nombre = "+reserva.getNombreHabitacion()+" and hotel = "+reserva.getHotel()+";");
+			stmnt.executeUpdate("DELETE from reserva WHERE id = "+reserva.getId()+";");
+			stmnt.executeUpdate("UPDATE tipo_habitacion SET cantidad = cantidad + 1 WHERE nombre = '"+reserva.getNombreHabitacion()+"' AND hotel = '"+reserva.getHotel().getNombreHotel()+"';");
 			stmnt.close();
 			conn2.commit();
 		} catch (SQLException e) {
@@ -66,18 +69,25 @@ public class AlmacenarReserva extends Behaviour {
 				e.printStackTrace();
 			}
 		}
-		System.out.println("Eliminando reserva "+edit);
+		System.out.println("Eliminando reserva "+elim);
 	}
 	private void editar() {
-		/*Statement stmnt = null;
+		Statement stmnt = null;
 		Connection conn2 = null;
 		try {
 			conn2 = DriverManager.getConnection(DatosDB.url);
 		    conn2.setAutoCommit(false);
 			stmnt=conn2.createStatement();
-			String consulta = "UPDATE " +
-			stmnt.executeUpdate("UPDATE cliente set nombre = '"+cliente.getNombre()+"', cedula = "+cliente.getCedula()+", presupuesto = "+cliente.getPresupuesto()+",preferencias = "+cliente.getPreferencias()+" where cedula = "+editar+";");
-			
+			System.out.println(preserva.getHotel().getNombreHotel()  +" - "+ rh.getReserva().getHotel().getNombreHotel());
+			System.out.println(preserva.getNombreHabitacion() +" - "+rh.getReserva().getNombreHabitacion());
+			if(preserva.getHotel().getNombreHotel() != rh.getReserva().getHotel().getNombreHotel()) {			
+				stmnt.executeUpdate("UPDATE tipo_habitacion SET cantidad = cantidad + 1 WHERE nombre = '"+preserva.getNombreHabitacion()+"' AND hotel = '"+preserva.getHotel().getNombreHotel()+"';");
+				stmnt.executeUpdate("UPDATE tipo_habitacion SET cantidad = cantidad - 1 WHERE nombre = '"+rh.getReserva().getNombreHabitacion()+"' AND hotel = '"+rh.getReserva().getHotel().getNombreHotel()+"';");
+			}else if(preserva.getNombreHabitacion() != rh.getReserva().getNombreHabitacion()) {
+				stmnt.executeUpdate("UPDATE tipo_habitacion SET cantidad = cantidad + 1 WHERE nombre = '"+preserva.getNombreHabitacion()+"' AND hotel = '"+preserva.getHotel().getNombreHotel()+"';");
+				stmnt.executeUpdate("UPDATE tipo_habitacion SET cantidad = cantidad - 1 WHERE nombre = '"+rh.getReserva().getNombreHabitacion()+"' AND hotel = '"+rh.getReserva().getHotel().getNombreHotel()+"';");
+			}
+			stmnt.executeUpdate("UPDATE reserva set hotel = '"+rh.getReserva().getHotel().getNombreHotel()+"', tipo_habitacion = '"+rh.getReserva().getNombreHabitacion()+"', fecha = '"+rh.getReserva().getFecha()+"';");
 			stmnt.close();
 			conn2.commit();
 		} catch (SQLException e) {
@@ -91,7 +101,7 @@ public class AlmacenarReserva extends Behaviour {
 				e.printStackTrace();
 			}
 		}
-		System.out.println("Editando reserva "+edit);*/
+		System.out.println("Editando reserva "+edit);
 	}
 	private void almacenar() {
 		Statement stmnt = null;
@@ -106,6 +116,7 @@ public class AlmacenarReserva extends Behaviour {
 							+ rh.getReserva().getHotel().getNombreHotel()+"','"
 							+ rh.getReserva().getNombreHabitacion()+"','"
 							+ rh.getReserva().getFecha()+"')");
+			stmnt.executeUpdate("UPDATE tipo_habitacion SET cantidad = cantidad - 1 WHERE nombre = '"+rh.getReserva().getNombreHabitacion()+"' AND hotel = '"+rh.getReserva().getHotel().getNombreHotel()+"';");
 			stmnt.close();
 			conn2.commit();
 		} catch (SQLException e) {

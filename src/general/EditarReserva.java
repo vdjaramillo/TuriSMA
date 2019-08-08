@@ -28,7 +28,7 @@ public class EditarReserva extends Behaviour {
 			}
 			int ind = input.nextInt()-1;
 			reserva = DatosDB.reservas.get(ind);
-			preserva = DatosDB.reservas.get(ind);
+			preserva = new Reserva(DatosDB.reservas.get(ind).getId(),DatosDB.reservas.get(ind).getCliente(),DatosDB.reservas.get(ind).getHotel(),DatosDB.reservas.get(ind).getNombreHabitacion(),DatosDB.reservas.get(ind).getFecha());
 			idedit=reserva.getId();
 			System.out.println("¿Desea cancelar la reserva? (1) sí (otro) no");
 			if(input.nextInt()==1) {
@@ -66,6 +66,7 @@ public class EditarReserva extends Behaviour {
 			}
 			System.out.println("¿Desea cambiar de fecha? (1) sí (otro) no");
 			if(input.nextInt()==1) {
+				input = new Scanner(System.in);
 				edit = true;
 				System.out.println("Digite la nueva fecha dd/mm/yy");
 				reserva.setFecha(input.nextLine());
