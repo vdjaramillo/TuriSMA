@@ -10,10 +10,11 @@ import ontologia.TuriSMAOntology;
 
 public class TuriMSG extends ACLMessage {
 	private static final long serialVersionUID = -1205981458725310907L;
-	String contenido;
-	Serializable objeto;
-	int parametro1;
-	int parametro2;
+	private String contenido;
+	private Serializable objeto;
+	private int parametro1;
+	private int parametro2;
+	private Object objeto2;
 	public TuriMSG(int performativa) {
 		super(performativa);
     	setOntology(TuriSMAOntology.ONTOLOGY_NAME);
@@ -39,6 +40,12 @@ public class TuriMSG extends ACLMessage {
 	}
 	public void setContent(String content) {
 		contenido = content;
+	}
+	public void setObjeto2(Object obj) {
+		objeto2 = obj;
+	}
+	public Object getObjeto2() {
+		return objeto2;
 	}
 	public String getContent() {
 		return contenido;

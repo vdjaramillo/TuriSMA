@@ -85,7 +85,7 @@ public class MSGListenner extends CyclicBehaviour{
 				
 			}else if(msg.getContent().equals("AElReserva")) {
 				//eliminación de una reserva 
-				myAgent.addBehaviour(new AlmacenarReserva(myAgent,msg.getContentObject(),msg.getParametro1(),msg.parametro2));
+				myAgent.addBehaviour(new AlmacenarReserva(myAgent,msg.getContentObject(),msg.getParametro1(),msg.getParametro2(),msg.getObjeto2()));
 				
 			}else if(msg.getContent().equals("DHabitacion")) {
 				//comportamiento para disminuir la cantidad
