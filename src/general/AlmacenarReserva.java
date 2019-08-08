@@ -12,11 +12,13 @@ import jade.lang.acl.ACLMessage;
 import ontologia.Reserva;
 import ontologia.ReservarHotel;
 import ontologia.Reserva;
+import ontologia.TipoHabitacion;
 
 public class AlmacenarReserva extends Behaviour {
 	private static final long serialVersionUID = 1589756164826324694L;
 	ReservarHotel rh;
 	Reserva reserva;
+	TipoHabitacion tipoHabitacion;
 	int edit = -1;
 	int elim = -1;
 	Reserva preserva;
@@ -49,8 +51,8 @@ public class AlmacenarReserva extends Behaviour {
 			conn2 = DriverManager.getConnection(DatosDB.url);
 		    conn2.setAutoCommit(false);
 			stmnt=conn2.createStatement();
-			stmnt.executeUpdate("DELETE");
-			
+			stmnt.executeUpdate("DELETE reserva where id = "+reserva.getId()+";");
+			stmnt.executeUpdate("UPDATE tipo_habitacion set cantidad = cantidad +1 where nombre = "+reserva.getNombreHabitacion()+" and hotel = "+reserva.getHotel()+";");
 			stmnt.close();
 			conn2.commit();
 		} catch (SQLException e) {
@@ -67,7 +69,7 @@ public class AlmacenarReserva extends Behaviour {
 		System.out.println("Eliminando reserva "+edit);
 	}
 	private void editar() {
-		Statement stmnt = null;
+		/*Statement stmnt = null;
 		Connection conn2 = null;
 		try {
 			conn2 = DriverManager.getConnection(DatosDB.url);
@@ -89,7 +91,7 @@ public class AlmacenarReserva extends Behaviour {
 				e.printStackTrace();
 			}
 		}
-		System.out.println("Editando reserva "+edit);
+		System.out.println("Editando reserva "+edit);*/
 	}
 	private void almacenar() {
 		Statement stmnt = null;
