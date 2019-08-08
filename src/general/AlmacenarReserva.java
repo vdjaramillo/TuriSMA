@@ -1,5 +1,6 @@
 package general;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,13 +12,13 @@ import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
 import ontologia.Reserva;
 import ontologia.ReservarHotel;
-import ontologia.Reserva;
 import ontologia.TipoHabitacion;
 
 public class AlmacenarReserva extends Behaviour {
 	private static final long serialVersionUID = 1589756164826324694L;
 	ReservarHotel rh;
 	Reserva reserva;
+	boolean editalma = false;
 	TipoHabitacion tipoHabitacion;
 	int edit = -1;
 	int elim = -1;
@@ -72,6 +73,7 @@ public class AlmacenarReserva extends Behaviour {
 		System.out.println("Eliminando reserva "+elim);
 	}
 	private void editar() {
+		editalma = true;
 		Statement stmnt = null;
 		Connection conn2 = null;
 		try {
@@ -104,6 +106,7 @@ public class AlmacenarReserva extends Behaviour {
 		System.out.println("Editando reserva "+edit);
 	}
 	private void almacenar() {
+		editalma = true;
 		Statement stmnt = null;
 		Connection conn2 = null;
 		try {
@@ -132,13 +135,22 @@ public class AlmacenarReserva extends Behaviour {
 		}
 	}
 	public boolean done() {
-		System.out.println("************************* \n"
-				+ "Reserva Confirmada \n"
-				+ "Hotel: "+rh.getReserva().getHotel().getNombreHotel()+"\n"
-				+ "Tipo Habitación: "+rh.getReserva().getNombreHabitacion()+"\n"
-				+ "Para el usuario: "+rh.getReserva().getCliente().getNombre());
-		ACLMessage msj = new TuriMSG("AgenteSistema","Volver",ACLMessage.INFORM);
-		myAgent.send(msj);
+		ACLMessage msj;
+		
+		if(editalma) {
+			try {
+				msj = new TuriMSG("AgenteReservas","CReserva",rh,ACLMessage.INFORM);
+				myAgent.send(msj);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else {
+			msj = new TuriMSG("AgenteReservas","UReserva",ACLMessage.INFORM);
+			myAgent.send(msj);
+		}
+		ACLMessage msj2 = new TuriMSG("AgenteSistema","Volver",ACLMessage.INFORM);
+		myAgent.send(msj2);
 		return true;
 	}
 

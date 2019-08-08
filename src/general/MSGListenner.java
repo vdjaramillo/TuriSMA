@@ -87,15 +87,15 @@ public class MSGListenner extends CyclicBehaviour{
 				//eliminación de una reserva 
 				myAgent.addBehaviour(new AlmacenarReserva(myAgent,msg.getContentObject(),msg.getParametro1(),msg.getParametro2()));
 				
-			}else if(msg.getContent().equals("DHabitacion")) {
-				//comportamiento para disminuir la cantidad
-				//de habitaciones de un hotel
+			}else if(msg.getContent().equals("CReserva")) {
+				//comportamiento para confirmar la edición o creación de una reserva
+				myAgent.addBehaviour(new ConfirmarReserva(myAgent,msg.getContentObject()));
 			}else if(msg.getContent().equals("UCliente")) {
-				
+				myAgent.addBehaviour(new Actualizador(myAgent,1));
 			}else if(msg.getContent().equals("UReserva")) {
-				
+				myAgent.addBehaviour(new Actualizador(myAgent,3));
 			}else if(msg.getContent().equals("UHotel")) {
-				
+				myAgent.addBehaviour(new Actualizador(myAgent,2));
 			}
 			escucha = true;
 		}else {

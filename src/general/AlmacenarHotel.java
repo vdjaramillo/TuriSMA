@@ -67,8 +67,10 @@ TipoHabitacion th;
 
 	@Override
 	public boolean done() {
-		ACLMessage msj = new TuriMSG("AgenteSistema","Volver",ACLMessage.INFORM);
+		ACLMessage msj = new TuriMSG("AgenteHotel","UHotel",ACLMessage.INFORM);
+		ACLMessage msj2 = new TuriMSG("AgenteSistema","Volver",ACLMessage.INFORM);
 		myAgent.send(msj);
+		myAgent.send(msj2);
 		return true;
 	}
 

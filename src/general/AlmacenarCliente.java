@@ -34,8 +34,12 @@ public class AlmacenarCliente extends Behaviour {
 	}
 	@Override
 	public boolean done() {
-		ACLMessage msj = new TuriMSG("AgenteSistema","Volver",ACLMessage.INFORM);
+		ACLMessage msj = new TuriMSG("AgenteCliente","UCliente",ACLMessage.INFORM);
+		ACLMessage msj2 = new TuriMSG("AgenteReservas","UReserva",ACLMessage.INFORM);
+		ACLMessage msj3 = new TuriMSG("AgenteSistema","Volver",ACLMessage.INFORM);
 		myAgent.send(msj);
+		myAgent.send(msj2);
+		myAgent.send(msj3);
 		return true;
 	}
 	private void almacenar() {
@@ -72,6 +76,9 @@ public class AlmacenarCliente extends Behaviour {
 		    conn2.setAutoCommit(false);
 			stmnt=conn2.createStatement();
 			stmnt.executeUpdate("UPDATE cliente set nombre = '"+cliente.getNombre()+"', cedula = "+cliente.getCedula()+", presupuesto = "+cliente.getPresupuesto()+",preferencias = "+cliente.getPreferencias()+" where cedula = "+editar+";");
+			if(editar != cliente.getCedula()) {
+				stmnt.executeUpdate("UPDATE reserva set cliente = "+cliente.getCedula()+" where cliente = "+editar+";");
+			}
 			stmnt.close();
 			conn2.commit();
 		} catch (SQLException e) {
@@ -86,4 +93,5 @@ public class AlmacenarCliente extends Behaviour {
 			}
 		}
 	}
+	
 }

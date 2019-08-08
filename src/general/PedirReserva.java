@@ -117,13 +117,6 @@ public class PedirReserva extends Behaviour {
 				if(input.nextInt()==1){
 					rh = new ReservarHotel();
 					rh.setReserva(rsv);
-					ACLMessage msj;
-					try {
-						msj = new TuriMSG("AgenteHotel","DHabitacion",rh,ACLMessage.INFORM);
-						myAgent.send(msj);
-					} catch (IOException e) {
-						System.out.println("Error al disminuir la cantidad de habitaciones");
-					}
 					reserva = true;
 					break;
 				}
