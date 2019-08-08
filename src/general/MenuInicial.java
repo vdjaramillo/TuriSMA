@@ -72,7 +72,6 @@ public class MenuInicial extends Behaviour {
 
 	@Override
 	public boolean done() {
-		//input.close();
 		return true;
 	}
 

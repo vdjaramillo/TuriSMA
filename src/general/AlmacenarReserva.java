@@ -70,7 +70,6 @@ public class AlmacenarReserva extends Behaviour {
 				e.printStackTrace();
 			}
 		}
-		System.out.println("Eliminando reserva "+elim);
 	}
 	private void editar() {
 		editalma = true;
@@ -103,7 +102,6 @@ public class AlmacenarReserva extends Behaviour {
 				e.printStackTrace();
 			}
 		}
-		System.out.println("Editando reserva "+edit);
 	}
 	private void almacenar() {
 		editalma = true;
@@ -136,7 +134,6 @@ public class AlmacenarReserva extends Behaviour {
 	}
 	public boolean done() {
 		ACLMessage msj;
-		
 		if(editalma) {
 			try {
 				msj = new TuriMSG("AgenteReservas","CReserva",rh,ACLMessage.INFORM);
@@ -145,12 +142,12 @@ public class AlmacenarReserva extends Behaviour {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else {
+		}else{
 			msj = new TuriMSG("AgenteReservas","UReserva",ACLMessage.INFORM);
 			myAgent.send(msj);
+			TuriMSG msj2 = new TuriMSG("AgenteSistema","Volver",ACLMessage.INFORM);
+			myAgent.send(msj2);
 		}
-		ACLMessage msj2 = new TuriMSG("AgenteSistema","Volver",ACLMessage.INFORM);
-		myAgent.send(msj2);
 		return true;
 	}
 

@@ -86,6 +86,7 @@ public class PedirReserva extends Behaviour {
 							//no almacene la reserva, el booleano se llama reserva
 							break;
 						}else {
+							input = new Scanner(System.in);
 							System.out.println("¿En qué hotel desea pedir una reserva?");
 							for(i = 0; i<htl.size();i++) {
 								System.out.println("("+(i+1)+") "+htl.get(i).getNombreHotel());

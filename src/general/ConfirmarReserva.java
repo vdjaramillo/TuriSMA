@@ -27,6 +27,8 @@ public class ConfirmarReserva extends Behaviour {
 	public boolean done() {
 		TuriMSG msj = new TuriMSG("AgenteReservas","UReserva",ACLMessage.INFORM);
 		myAgent.send(msj);
+		TuriMSG msj2 = new TuriMSG("AgenteSistema","Volver",ACLMessage.INFORM);
+		myAgent.send(msj2);
 		return true;
 	}
 

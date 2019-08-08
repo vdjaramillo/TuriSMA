@@ -50,12 +50,13 @@ public class EditarReserva extends Behaviour {
 			boolean chotel = false;
 			if(input.nextInt()==1) {
 				edit=true;
+				chotel = true;
 				System.out.println("Elija el nuevo hotel");
 				for(int i = 0; i<DatosDB.hoteles.size();i++) {
 					System.out.println("("+(i+1)+") "+DatosDB.hoteles.get(i).getNombreHotel());
 				}
 				reserva.setHotel(DatosDB.hoteles.get(input.nextInt()-1));
-				chotel = true;
+				
 			}
 			if(!chotel) {
 				System.out.println("¿Desea cambiar de habitación? (1) sí (otro) no");
@@ -101,9 +102,6 @@ public class EditarReserva extends Behaviour {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else{
-			msj = new TuriMSG("AgenteSistema","Volver",ACLMessage.INFORM);
-			myAgent.send(msj);
 		}
 		return true;
 	}

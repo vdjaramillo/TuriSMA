@@ -5,7 +5,6 @@ import java.io.Serializable;
 
 import jade.core.AID;
 import jade.lang.acl.ACLMessage;
-import ontologia.Reserva;
 import ontologia.TuriSMAOntology;
 
 public class TuriMSG extends ACLMessage {

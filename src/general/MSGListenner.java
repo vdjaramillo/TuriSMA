@@ -10,7 +10,7 @@ public class MSGListenner extends CyclicBehaviour{
 	private static final long serialVersionUID = -8303429277705296458L;
 		String tipoEscucha;
 		TuriMSG msg;
-		Boolean escucha;
+		boolean escucha;
 		public MSGListenner(Agent a){
 			super(a);
 			escucha = false;
@@ -82,11 +82,9 @@ public class MSGListenner extends CyclicBehaviour{
 			}else if(msg.getContent().equals("AEReserva")) {
 				//edición de una reserva
 				myAgent.addBehaviour(new AlmacenarReserva(myAgent,msg.getContentObject(),msg.getParametro1(),msg.getObjeto2()));
-				
 			}else if(msg.getContent().equals("AElReserva")) {
 				//eliminación de una reserva 
 				myAgent.addBehaviour(new AlmacenarReserva(myAgent,msg.getContentObject(),msg.getParametro1(),msg.getParametro2()));
-				
 			}else if(msg.getContent().equals("CReserva")) {
 				//comportamiento para confirmar la edición o creación de una reserva
 				myAgent.addBehaviour(new ConfirmarReserva(myAgent,msg.getContentObject()));
