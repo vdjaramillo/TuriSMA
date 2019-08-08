@@ -71,9 +71,7 @@ public class AlmacenarCliente extends Behaviour {
 			conn2 = DriverManager.getConnection(DatosDB.url);
 		    conn2.setAutoCommit(false);
 			stmnt=conn2.createStatement();
-			String consulta = "UPDATE " +
 			stmnt.executeUpdate("UPDATE cliente set nombre = '"+cliente.getNombre()+"', cedula = "+cliente.getCedula()+", presupuesto = "+cliente.getPresupuesto()+",preferencias = "+cliente.getPreferencias()+" where cedula = "+editar+";");
-			
 			stmnt.close();
 			conn2.commit();
 		} catch (SQLException e) {

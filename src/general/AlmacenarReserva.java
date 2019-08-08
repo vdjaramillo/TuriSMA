@@ -10,10 +10,12 @@ import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
 import ontologia.ReservarHotel;
+import ontologia.Reserva;
 
 public class AlmacenarReserva extends Behaviour {
 	private static final long serialVersionUID = 1589756164826324694L;
 	ReservarHotel rh;
+	Reserva reserva;
 	int edit = -1;
 	int elim = -1;
 	public AlmacenarReserva(Agent myAgent, Serializable contentObject) {
@@ -38,9 +40,52 @@ public class AlmacenarReserva extends Behaviour {
 		}
 	}
 	private void eliminar() {
+		Statement stmnt = null;
+		Connection conn2 = null;
+		try {
+			conn2 = DriverManager.getConnection(DatosDB.url);
+		    conn2.setAutoCommit(false);
+			stmnt=conn2.createStatement();
+			stmnt.executeUpdate("DELETE");
+			
+			stmnt.close();
+			conn2.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				conn2.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		System.out.println("Eliminando reserva "+edit);
 	}
 	private void editar() {
+		Statement stmnt = null;
+		Connection conn2 = null;
+		try {
+			conn2 = DriverManager.getConnection(DatosDB.url);
+		    conn2.setAutoCommit(false);
+			stmnt=conn2.createStatement();
+			String consulta = "UPDATE " +
+			stmnt.executeUpdate("UPDATE cliente set nombre = '"+cliente.getNombre()+"', cedula = "+cliente.getCedula()+", presupuesto = "+cliente.getPresupuesto()+",preferencias = "+cliente.getPreferencias()+" where cedula = "+editar+";");
+			
+			stmnt.close();
+			conn2.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				conn2.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		System.out.println("Editando reserva "+edit);
 	}
 	private void almacenar() {
@@ -82,3 +127,4 @@ public class AlmacenarReserva extends Behaviour {
 	}
 
 }
+
