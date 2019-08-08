@@ -65,6 +65,27 @@ public class AlmacenarCliente extends Behaviour {
 		}		
 	}
 	private void editar() {
-		System.out.println("Editando");
+		Statement stmnt = null;
+		Connection conn2 = null;
+		try {
+			conn2 = DriverManager.getConnection(DatosDB.url);
+		    conn2.setAutoCommit(false);
+			stmnt=conn2.createStatement();
+			String consulta = "UPDATE " +
+			stmnt.executeUpdate("UPDATE cliente set nombre = '"+cliente.getNombre()+"', cedula = "+cliente.getCedula()+", presupuesto = "+cliente.getPresupuesto()+",preferencias = "+cliente.getPreferencias()+" where cedula = "+editar+";");
+			
+			stmnt.close();
+			conn2.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				conn2.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 }

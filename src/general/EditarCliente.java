@@ -28,7 +28,8 @@ public class EditarCliente extends Behaviour {
 		ccedit=cliente.getCedula();
 		System.out.println("¿Desea editar el nombre? (1) sí (otro) no");
 		if(input.nextInt()==1) {
-			System.out.println("Digite el nombre del nuevo cliente");
+			input = new Scanner(System.in);
+			System.out.println("Digite el nombre del cliente");
 			cliente.setNombre(input.nextLine());
 		}
 		System.out.println("¿Desea editar la cédula? (1) sí (otro) no");
