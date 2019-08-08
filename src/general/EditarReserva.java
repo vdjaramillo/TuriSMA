@@ -26,8 +26,9 @@ public class EditarReserva extends Behaviour {
 			for(int i = 0; i<DatosDB.reservas.size();i++) {
 				System.out.println("("+(i+1)+") "+DatosDB.reservas.get(i).getCliente().getCedula()+" en : "+DatosDB.reservas.get(i).getHotel().getNombreHotel()+" el: "+DatosDB.reservas.get(i).getFecha());
 			}
-			reserva = DatosDB.reservas.get(input.nextInt()-1);
-			preserva = DatosDB.reservas.get(input.nextInt()-1);
+			int ind = input.nextInt()-1;
+			reserva = DatosDB.reservas.get(ind);
+			preserva = DatosDB.reservas.get(ind);
 			idedit=reserva.getId();
 			System.out.println("¿Desea cancelar la reserva? (1) sí (otro) no");
 			if(input.nextInt()==1) {
