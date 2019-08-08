@@ -9,7 +9,7 @@ import ontologia.Reserva;
 import ontologia.ReservarHotel;
 
 public class EditarReserva extends Behaviour {
-	Reserva reserva;
+	Reserva reserva, preserva;
 	int idedit;
 	private static final long serialVersionUID = 5383558470414502313L;
 	boolean edit = false;
@@ -27,6 +27,7 @@ public class EditarReserva extends Behaviour {
 				System.out.println("("+(i+1)+") "+DatosDB.reservas.get(i).getCliente().getCedula()+" en : "+DatosDB.reservas.get(i).getHotel().getNombreHotel()+" el: "+DatosDB.reservas.get(i).getFecha());
 			}
 			reserva = DatosDB.reservas.get(input.nextInt()-1);
+			preserva = DatosDB.reservas.get(input.nextInt()-1);
 			idedit=reserva.getId();
 			System.out.println("¿Desea cancelar la reserva? (1) sí (otro) no");
 			if(input.nextInt()==1) {
@@ -81,6 +82,7 @@ public class EditarReserva extends Behaviour {
 			try {
 				msj = new TuriMSG("AgenteSistema","AEReserva",rh,ACLMessage.INFORM);
 				msj.setParametro1(rh.getReserva().getId());
+				msj.setObjeto2(preserva);
 				myAgent.send(msj);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

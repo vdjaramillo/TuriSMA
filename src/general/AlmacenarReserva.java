@@ -9,6 +9,7 @@ import java.sql.Statement;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
 import jade.lang.acl.ACLMessage;
+import ontologia.Reserva;
 import ontologia.ReservarHotel;
 import ontologia.Reserva;
 
@@ -18,6 +19,7 @@ public class AlmacenarReserva extends Behaviour {
 	Reserva reserva;
 	int edit = -1;
 	int elim = -1;
+	Reserva preserva;
 	public AlmacenarReserva(Agent myAgent, Serializable contentObject) {
 		super(myAgent);
 		rh = (ReservarHotel) contentObject;
@@ -26,9 +28,10 @@ public class AlmacenarReserva extends Behaviour {
 		this(myAgent, contentObject);
 		edit = parametro1;
 	}
-	public AlmacenarReserva(Agent myAgent, Serializable contentObject, int parametro1, int parametro2) {
+	public AlmacenarReserva(Agent myAgent, Serializable contentObject, int parametro1, int parametro2, Object preserva) {
 		this(myAgent,contentObject,parametro1);
 		elim = parametro2;
+		this.preserva = (Reserva) preserva;
 	}
 	public void action() {
 		if(edit==-1 && elim ==-1) {
