@@ -30,9 +30,10 @@ public class RegistrarHotel extends Behaviour {
 		hotel.setTelefono(input.nextInt());
 		System.out.println("Digite la dirección del hotel");
 		input = new Scanner(System.in);
-		String dir = input.next();
+		String dir = input.nextLine();
 		hotel.setDireccion(dir);
 		System.out.println("¿Tiene certificación de idiomas (1) sí (otro) no?");
+		input = new Scanner(System.in);
 		int cert = input.nextInt();
 		if(cert == 1) {
 			hotel.setCertificaciónDeIdiomas(true);
