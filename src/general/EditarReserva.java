@@ -86,7 +86,9 @@ public class EditarReserva extends Behaviour {
 			rh = new ReservarHotel();
 			rh.setReserva(reserva);
 		}else {
-			System.out.println("No hay reservas para editar");
+			System.out.println("No hay reservas para editar2");
+			TuriMSG msj = new TuriMSG("AgenteSistema","Volver",ACLMessage.INFORM);
+			myAgent.send(msj);
 		}
 	}
 	@Override

@@ -10,9 +10,6 @@ import ontologia.RegistrarCaracteristicasDelHotel;
 import ontologia.TipoHabitacion;
 
 public class RegistrarHotel extends Behaviour {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 7729736436300749254L;
 	RegistrarCaracteristicasDelHotel ih = new RegistrarCaracteristicasDelHotel();
 	public RegistrarHotel(Agent myAgent) {
@@ -32,8 +29,8 @@ public class RegistrarHotel extends Behaviour {
 		input = new Scanner(System.in);
 		String dir = input.nextLine();
 		hotel.setDireccion(dir);
+		input.reset();
 		System.out.println("¿Tiene certificación de idiomas (1) sí (otro) no?");
-		input = new Scanner(System.in);
 		int cert = input.nextInt();
 		if(cert == 1) {
 			hotel.setCertificaciónDeIdiomas(true);
